@@ -23,17 +23,21 @@ Route::get('/', function () {
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified'
+    'verified',
+    'isAdmin'
 ])->group(function () {
+    Route::resource('category', 'App\Http\Controllers\CategoryController');
+    Route::resource('product', 'App\Http\Controllers\ProductController');
+    Route::post('/logout', [UserController::class, 'logout']);
     Route::get('/dashboard', function () {
+        
         return view('admin.dashboard');
     })->name('dashboard');
 });
 
-Route::resource('category', 'App\Http\Controllers\CategoryController');
-Route::resource('product', 'App\Http\Controllers\ProductController');
 
-Route::get('/redirect', [HomeController::class, 'redirect']);
+
+// Route::get('/redirect', [HomeController::class, 'redirect']);
 Route::get('/home', [HomeController::class, 'index']);
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 

@@ -9,8 +9,8 @@ class UserController extends Controller
 {
     public function logout(Request $request) {
 
-        Auth::logout();
-        return redirect('home');
+        // Auth::logout();
+        return redirect('home')->with(Auth::logout());;
 
     }
 }
