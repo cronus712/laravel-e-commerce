@@ -1,5 +1,6 @@
 <link type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+
 @extends('category.layout')
  
 @section('main')
@@ -44,13 +45,15 @@
 
                   @csrf
                   @method('DELETE')
-                 <button class="btn btn-danger float-end" type="submit">Delete</button>
+                 <button class="btn btn-danger float-end" onclick="deleteConfirm(event)" type="submit">Delete</button>
                 </form>
             </td>
         </tr>
         @endforeach
    
   </table>
+
+
 </div>
 
     @endsection

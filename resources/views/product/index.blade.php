@@ -22,6 +22,7 @@
         <tr>
           <th>#</th>
           <th>Name</th>
+          <th>Category</th>
           <th>Description</th>
           <th>Image</th>
           <th width="200px">Actions</th>
@@ -32,6 +33,7 @@
         <tr>
             <th >{{$product->id}}</th>
             <td>{{$product->name}} </td>
+            <td>{{$product->category->name}} </td>
             <td>{{$product->description}}</td>
             <td> <img class="rounded-circle  mt-2" src="{{asset('storage/images/'.$product->image)}}" style="width:100px; height:100px;"></td>
 
@@ -44,7 +46,7 @@
 
                   @csrf
                   @method('DELETE')
-                 <button class="btn btn-danger float-end" type="submit">Delete</button>
+                 <button class="btn btn-danger float-end" onclick="deleteConfirm(event)" type="submit">Delete</button>
                 </form>
             </td>
         </tr>
