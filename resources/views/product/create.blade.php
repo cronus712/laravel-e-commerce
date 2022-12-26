@@ -102,7 +102,7 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox"  name="popular" >
+            <input class="form-check-input" type="checkbox"  name="trending" >
             <label class="form-check-label" for="flexCheckDefault">
                 <strong> Trending:</strong>
             </label>
