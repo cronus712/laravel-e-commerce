@@ -1120,6 +1120,34 @@ form input[type="submit"]:focus {
     font-weight: 400;
 }
 
+
+.category img {
+  transition: all .5s ease-in-out;
+}
+
+.category:hover img {
+  filter: blur(3px);
+  transform: scale(1.03);
+}
+
+.category:hover .category-name {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.553);
+
+}
+
+.category-name {
+  color: white;
+  font-family: 'Pragati Narrow', sans-serif;
+  font-size: 2rem;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity .5s ease-in-out;
+}
+
 http://kute-themes.com/html/boutique/html/index.html
 https://template.hasthemes.com/noraure/noraure/index.html
 https://preview.hasthemes.com/xoss-preview/xoss/index.html

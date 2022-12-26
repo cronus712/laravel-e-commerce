@@ -16,6 +16,9 @@
       <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
       <!-- bootstrap core css -->
       <link href="{{ asset('css/bootstrap.css')}}" rel="stylesheet"/>
+      <link href="{{ asset('css/owl.carousel.min.css')}}" rel="stylesheet"/>
+      <link href="{{ asset('css/owl.theme.default.min.css')}}" rel="stylesheet"/>
+
       
       <!-- font awesome style -->
       <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet"/>
@@ -23,7 +26,6 @@
       <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
       <!-- responsive style -->
       <link href="{{ asset('css/responsive.css') }}" rel="stylesheet"/>
-      <link href="{{ asset('css/style.css') }}" rel="stylesheet">
    </head>
    <body>
       
@@ -65,7 +67,15 @@
          </div>
       </section>
       <!-- end arrival section -->
+
       
+           <!-- category section -->
+           <div> 
+            @include('home.category')
+            </div>
+         <!-- end category section -->
+
+
       <!-- product section -->
       <div> 
          @include('home.product')
@@ -115,6 +125,7 @@
       
       <!-- jQery -->
       <script src="{{ asset("js/jquery-3.4.1.min.js") }}" ></script>
+      <script src="{{ asset("owl.carousel.min.js") }}" ></script>
 
       <!-- popper js -->
       <script src="{{ asset("js/popper.min.js") }} " ></script>
@@ -122,8 +133,26 @@
       <script src=" {{ asset("js/bootstrap.js") }}" ></script>
       <!-- custom js -->
       <script src="{{ asset("js/custom.js") }}" ></script>
-              
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-      
+      <script>
+         $('.owl-carousel').owlCarousel({
+     loop:true,
+     margin:10,
+     nav:true,
+     responsive:{
+         0:{
+             items:1
+         },
+         600:{
+             items:3
+         },
+         1000:{
+             items:5
+         }
+     }
+ })
+     </script>
    </body>
 </html>

@@ -3,7 +3,7 @@
     <div class="container">
        <div class="heading_container heading_center">
           <h2>
-             Our <span>products</span>
+             Trending <span>products</span>
           </h2>
        </div>
        <div class="row">
