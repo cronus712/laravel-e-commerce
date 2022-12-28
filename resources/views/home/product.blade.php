@@ -22,8 +22,8 @@
                       </a>
                    </div>
                 </div>
-                <div class="img-box">
-                   <img src="{{ asset('storage/images/'.$product->image)}}" alt="Product image">
+                <div class="img-box" >
+                   <img src="{{ asset('storage/images/'.$product->image)}}" alt="Product image" >
                 </div>
                 <div class="detail-box">
                    <h5>
@@ -40,10 +40,11 @@
           @endforeach
        </div>
 
-       <div class="btn-box">
+       {{-- <div class="btn-box">
           <a href="">
           View All products
           </a>
-       </div>
+       </div> --}}
     </div>
  </section>
+

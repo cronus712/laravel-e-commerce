@@ -16,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home.home');
-});
+Route::get('/', [HomeController::class, 'index']);
+
 
 Route::middleware([
     'auth:sanctum',
@@ -39,5 +38,7 @@ Route::middleware([
 
 // Route::get('/redirect', [HomeController::class, 'redirect']);
 Route::get('/home', [HomeController::class, 'index']);
+Route::get('category/{slug}/{product_name}', [HomeController::class, 'viewProduct']);
+Route::get('view-category/{slug}', [HomeController::class, 'category']);
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
