@@ -28,10 +28,18 @@
       <link href="{{ asset('css/responsive.css') }}" rel="stylesheet"/>
    </head>
    <body>
-      
+           <div>
+
+            <main>
+
+               <div class="container-fluid px-0 mx-0">
+
+          
     
          <!-- header section strats -->
-          @include('home.navbar')
+         <div>
+            @include('home.navbar')
+         </div>
          <!-- end header section -->
 
          <!-- slider section -->
@@ -76,13 +84,15 @@
          <!-- end category section -->
 
 
+
+
       <!-- product section -->
       <div> 
          @include('home.product')
     </div>
       <!-- end product section -->
 
-      <!-- subscribe section -->
+      {{-- <!-- subscribe section -->
       <section class="subscribe_section">
          <div class="container-fuild">
             <div class="box">
@@ -105,7 +115,9 @@
             </div>
          </div>
       </section>
-      <!-- end subscribe section -->
+      <!-- end subscribe section --> --}}
+
+
 
       <!-- client section -->
       @include('home.testimonial')
@@ -139,8 +151,13 @@
       <script>
          $('.owl-carousel').owlCarousel({
      loop:true,
-     margin:10,
+     margin:20,
+     stagePadding:50,
      nav:true,
+     autoplay:true,
+     autoplayTimeout:2000,
+     autoplayHoverPause:true,
+     
      responsive:{
          0:{
              items:1
@@ -154,5 +171,9 @@
      }
  })
      </script>
+
+</div>       
+</main>
+</div>
    </body>
 </html>

@@ -1,8 +1,9 @@
 
+    
 <header class="header_section">
     <div class="container">
        <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html"><img width="250" src="images/logo.png" alt="#" /></a>
+          <a class="navbar-brand" href="{{ url('home')}}"><img width="250" src="{{ asset('images/logo.png') }}" alt="E-commerce" /></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class=""> </span>
           </button>
@@ -21,33 +22,29 @@
                 <li class="nav-item">
                    <a class="nav-link" href="product.html">Products</a>
                 </li>
-                <li class="nav-item">
-                   <a class="nav-link" href="blog_list.html">Blog</a>
-                </li>
-                <li class="nav-item">
-                   <a class="nav-link" href="contact.html">Contact</a>
-                </li>
+
+                <form class="form-inline">
+                  <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                  </button>
+               </form>
 
                 @if (Auth::check() && Auth::user()->role == 'admin')
-                <li class="nav-item">
-                  <a class="nav-link" href="{{ route('dashboard')}} ">Dashboard</a>
+                <li class="nav-item ">
+                  <a class="nav-link " href="{{ route('dashboard')}} " style="background-color:#f7444d76;">Dashboard</a>
                </li>
 
                 @endif
                 
-                <form class="form-inline">
-                   <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                   <i class="fa fa-search" aria-hidden="true"></i>
-                   </button>
-                </form>
+              
 
                 @if (Route::has('login'))
 
                   @auth
 
           
-                  <li class="nav-item dropdown mt-1 ml-5 " style="font-size:12px;font-family:'arial';" >
-                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color:#f7444e;">
+                  <li class="nav-item dropdown mt-1 " style="font-size:12px;font-family:'arial';" >
+                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre style="color:#0d0c0ca0;">
                         {{-- <img class="image rounded-circle" src="{{asset('/storage/app/public/profile-photos'.Auth::user()->profile_photo_path)}}"  style="width: 50px;height: 50px; "> --}}
                          {{ Auth::user()->name }}
                      </a>

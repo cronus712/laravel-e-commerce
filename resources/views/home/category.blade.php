@@ -1,4 +1,3 @@
-
     <div class="container mt-5">
 
        <div class="heading_container heading_center">
@@ -11,11 +10,11 @@
             @foreach ($category as $category)
                 
             <div class="item">
-                <div class="card category">
-             <img src="{{ asset('storage/images/'.$category->image)}}" alt="Category image" style="height:300px;width:400px" class="category-image">
+                <div class="card category" >
+             <img src="{{ asset('storage/images/'.$category->image)}}" alt="Category image" style="height:300px;width:100%;" class="category-image">
 
              <div class="category-name">
-                <a href="#" style="color:white;">{{$category->name}}</a>
+                <a href="{{ url('/view-category/'.$category->slug)}}" style="color:white;">{{$category->name}}</a>
              </div>
 
             </div>

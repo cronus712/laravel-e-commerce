@@ -1120,11 +1120,47 @@ form input[type="submit"]:focus {
     font-weight: 400;
 }
 
+.view-category:hover img {
+  transform: scale(1.05);
+  box-shadow: 5px 9px 11px 11px rgba(0, 0, 0, 0.519);
+}
 
+
+.view-category:hover .view-category-name {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.553);
+  transform: scale(1.05);
+
+
+}
+
+.view-category img {
+  
+  transition: all .5s ease-in-out;
+  -webkit-box-shadow: 5px 10px 10px #f7444d78;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    5px 10px 10px #f7444d78;  /* Firefox 3.5 - 3.6 */
+  box-shadow:  5px 10px 10px #f7444d75; }
+
+.category-text-title {
+  position: absolute;
+  bottom: 40px;
+  left: 16px;
+}
+
+.category-text-text {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
+
+.category-text-text-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
 .category img {
   transition: all .5s ease-in-out;
 }
-
 .category:hover img {
   filter: blur(3px);
   transform: scale(1.03);
@@ -1147,6 +1183,17 @@ form input[type="submit"]:focus {
   transform: translate(-50%, -50%);
   transition: opacity .5s ease-in-out;
 }
+
+.view-category-name {
+  color: white;
+  font-family: 'Pragati Narrow', sans-serif;
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+  display: block;
+  pointer-events: none;
+}
+
+
 
 http://kute-themes.com/html/boutique/html/index.html
 https://template.hasthemes.com/noraure/noraure/index.html

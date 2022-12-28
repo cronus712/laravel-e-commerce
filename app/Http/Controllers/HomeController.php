@@ -10,19 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-   //  public function redirect() {
-   //      $usertype = Auth::user()->role;
-
-   //      if($usertype == 'admin') {
-
-   //          return view('admin.dashboard');
-   //       }
-
-   //       else {
-   //          return view('home.home');
-   //       }
-   //  }
-
+   
     public function index() {
 
       $category = Category::where('popular','on')->get();
@@ -30,6 +18,40 @@ class HomeController extends Controller
        return view('home.home', compact('product', 'category'));
      }
 
-     
+     public function category($slug) {
+
+      if(Category::where('slug', $slug)->exists()) {
+         
+           $category = Category::where('slug', $slug)->first();
+           $product = Product::where('category_id', $category->id)->where('status', 'on')->get();
+           return view('home.view-category', compact('category', 'product'));
+      }
+
+      else {
+         return redirect('/')->with('status', 'Slug does not exist');
+      }
+
+     }
+
+     public function viewProduct($slug, $product_name) {
+
+      if(Category::where('slug', $slug)->exists())
+      {
+        if(Product::where('name', $product_name)->exists()) {
+         
+         $product = Product::where('name', $product_name)->first();
+         return view('home.view-product', compact('product'));
+        }
+
+        else {
+         return redirect('/')->with('success', 'The link was broken');
+      }
+    }
+
+     else {
+       return redirect('/')->with('success', 'Category not found');
+    }
+
+     }
 
 }
