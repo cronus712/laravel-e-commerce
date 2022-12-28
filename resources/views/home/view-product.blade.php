@@ -5,7 +5,7 @@
 <!-- responsive style -->
 <link href="{{ asset('css/responsive.css') }}" rel="stylesheet"/>
 <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <style>
     body{
     background-color: #edf1f5;
@@ -38,7 +38,7 @@
 
         <div class="container">
 
-            <div class="card shadow">
+            <div class="card shadow product_data">
                 <div class="card-body">
 
                     <nav aria-label="breadcrumb" >
@@ -48,7 +48,7 @@
                           <li class="breadcrumb-item active">{{$product->name}}</li>
                         </ol>
                       </nav>
-
+                        
                     <h3 class="card-subtitle">{{$product->name}}
                     @if ($product->trending == 'on')
                     <div class=" badge bg-danger float-right" style="font-size: 16px;"> Trending</div>
@@ -56,7 +56,7 @@
                     @endif
                     <div class="row">
                         <div class="col-lg-5 col-md-5 col-sm-6">
-                            <div class=""><img src="{{asset('storage/images/'.$product->image)}}" class="img-responsive" style="height: 100%;width:400px;"></div>
+                       <img src="{{asset('storage/images/'.$product->image)}}" class="img-responsive" style="height: 100%;width:400px;">
                         </div>
                         
                         <div class="col-lg-7 col-md-7 col-sm-6">
@@ -77,6 +77,7 @@
                               <hr>
 
                                 <div class="col-md-3 float-left">
+                                    <input type="hidden" value="{{$product->id}}" class="prod_id">
                                     <div class="input-group text-center ">
                                         <button class="input-group-text decrement-btn">-</button>
                                         <input type="text" name="quantity" value="1" class="form-control qty-input" />
@@ -85,7 +86,7 @@
 
                                 </div>
 
-                            <button class="btn btn-success btn-rounded mr-1" >
+                            <button class="btn btn-success btn-rounded mr-1 addToCartBtn" >
                                 Add To Cart <i class="fa fa-shopping-cart"></i>
                             </button>
                             <button class="btn btn-info btn-rounded">Add To Wishlist</button>
@@ -113,36 +114,8 @@
 <script src="{{ asset("js/custom.js") }}" ></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-
-<script>
-
-$(document).ready(function() {
-$('.increment-btn').click(function(e) {
-    e.preventDefault();
-    var inc_value = $('.qty-input').val();
-    var value = parseInt(inc_value, 10);
-    value = isNaN(value) ? 0 : value;
-    if(value < 10) {
-        value++;
-        $('.qty-input').val(value);
-    }
-
-});
-
-$('.decrement-btn').click(function(e) {
-    e.preventDefault();
-    var dec_value = $('.qty-input').val();
-    var value = parseInt(dec_value, 10);
-    value = isNaN(value) ? 0 : value;
-    if(value  > 1) {
-        value--;
-        $('.qty-input').val(value);
-    }
-
-});
-
-});
-
-</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script src="{{asset('/js/cart.js')}}"></script>
 
 @include('home.footer')

@@ -3,6 +3,8 @@
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\KartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,7 +40,19 @@ Route::middleware([
 
 // Route::get('/redirect', [HomeController::class, 'redirect']);
 Route::get('/home', [HomeController::class, 'index']);
+
 Route::get('category/{slug}/{product_name}', [HomeController::class, 'viewProduct']);
 Route::get('view-category/{slug}', [HomeController::class, 'category']);
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth:sanctum'])->group(function() {
+
+Route::get('cart', [CartController::class, 'viewCart']);
+});
+
+Route::post('add-to-cart', [CartController::class, 'addProduct']);
+Route::post('delete-cart-item', [CartController::class, 'deleteProduct']);
+
+
+
 
