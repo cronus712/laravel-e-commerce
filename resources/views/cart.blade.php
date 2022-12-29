@@ -47,26 +47,34 @@
                       <li class="breadcrumb-item active"><a href="{{url('cart')}}">Cart</a> </li>
                     </ol>
                   </nav>
-                         
+                          @php
+                             $total = 0;
+                          @endphp
                   @foreach ($cartItem as $item)
                       
-                    <div class="row product_data">
+                    <div class="row justify-content-center product_data">
 
                         <div class="col-md-2">
                             <img src="{{asset('storage/images/'.$item->products->image)}}"  alt="image here" style="height: 70px; width:70px;" class="p-2">
                         </div>
                               
-                        <div class="col-md-5">
+                        <div class="col-md-3">
 
-                          <h6 class="p-2">{{$item->products->name}}</h6>
+                          <h6 class="p-3">{{$item->products->name}}</h6>
+
+                        </div>
+
+                        <div class="col-md-2">
+                          <h6 class="p-3 selling-price">{{$item->products->selling_price}} TND</h6>
+
                         </div>
 
                         <div class="col-md-3">
                             <input type="hidden" class="prod_id" value="{{$item->product_id}}">
-                            <div class="input-group text-center p-2 ">
-                                <button class="input-group-text decrement-btn">-</button>
-                                <input type="text" name="quantity" value="{{$item->product_quantity}}" class="form-control qty-input" />
-                                <button class="input-group-text increment-btn">+</button>
+                            <div class="input-group text-center mt-2 ">
+                                <button class="input-group-text changeQuantity decrement-btn">-</button>
+                                <input type="text" name="quantity" class="form-control qty-input"  value="{{$item->product_quantity}}" />
+                                <button class="input-group-text changeQuantity increment-btn">+</button>
                             </div>
 
                         </div>
@@ -80,8 +88,15 @@
 
                        
                     </div>
+                    @php
+                    $total +=  $item->products->selling_price * $item->product_quantity ;
+                 @endphp
                     @endforeach
-
+                    
+                </div>
+                <div class="card-footer">
+                  <h6 >Total Price : {{$total}} TND</h6>
+                  <button class="btn btn-success float-right">Proceed to Checkout</button>
                 </div>
             </div>
         </div>

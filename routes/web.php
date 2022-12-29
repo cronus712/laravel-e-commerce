@@ -52,6 +52,8 @@ Route::get('cart', [CartController::class, 'viewCart']);
 
 Route::post('add-to-cart', [CartController::class, 'addProduct']);
 Route::post('delete-cart-item', [CartController::class, 'deleteProduct']);
+Route::post('update-cart', [CartController::class, 'updateProduct']);
+
 
 
 
