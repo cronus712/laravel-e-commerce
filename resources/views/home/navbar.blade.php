@@ -39,7 +39,7 @@
 
                 @if (Auth::check() && Auth::user()->role == 'admin')
                 <li class="nav-item ">
-                  <a class="nav-link " href="{{ route('dashboard')}} " style="background-color:#f7444d76;">Dashboard</a>
+                  <a class="nav-link mt-1" href="{{ route('dashboard')}} " style="background-color:#f7444d76;">Dashboard</a>
                </li>
 
                 @endif

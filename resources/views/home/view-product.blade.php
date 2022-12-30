@@ -50,7 +50,7 @@
                       </nav>
                         
                     <h3 class="card-subtitle">{{$product->name}}
-                    @if ($product->trending == 'on')
+                    @if ($product->trending == 'on' && $product->quantity > 0)
                     <div class=" badge bg-danger float-right" style="font-size: 16px;"> Trending</div>
                    </h3>
                     @endif
@@ -85,10 +85,12 @@
                                     </div>
 
                                 </div>
-
-                            <button class="btn btn-success btn-rounded mr-1 addToCartBtn" >
-                                Add To Cart <i class="fa fa-shopping-cart"></i>
-                            </button>
+                                    @if ($product->quantity > 0)
+                                    <button class="btn btn-success btn-rounded mr-1 addToCartBtn" >
+                                        Add To Cart <i class="fa fa-shopping-cart"></i>
+                                    </button>                          
+                                @endif
+                           
                             <button class="btn btn-info btn-rounded">Add To Wishlist</button>
 
                             <h4 class="box-title mt-5">Product Description</h4>

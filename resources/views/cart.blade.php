@@ -47,29 +47,42 @@
                       <li class="breadcrumb-item active"><a href="{{url('cart')}}">Cart</a> </li>
                     </ol>
                   </nav>
-                         
+                          @php
+                             $total = 0;
+                          @endphp
                   @foreach ($cartItem as $item)
                       
-                    <div class="row product_data">
+                    <div class="row justify-content-center product_data">
 
                         <div class="col-md-2">
                             <img src="{{asset('storage/images/'.$item->products->image)}}"  alt="image here" style="height: 70px; width:70px;" class="p-2">
                         </div>
                               
-                        <div class="col-md-5">
-
-                          <h6 class="p-2">{{$item->products->name}}</h6>
-                        </div>
-
                         <div class="col-md-3">
-                            <input type="hidden" class="prod_id" value="{{$item->product_id}}">
-                            <div class="input-group text-center p-2 ">
-                                <button class="input-group-text decrement-btn">-</button>
-                                <input type="text" name="quantity" value="{{$item->product_quantity}}" class="form-control qty-input" />
-                                <button class="input-group-text increment-btn">+</button>
-                            </div>
+
+                          <h6 class="p-3">{{$item->products->name}}</h6>
 
                         </div>
+
+                        <div class="col-md-2">
+                          <h6 class="p-3 selling-price">{{$item->products->selling_price}} TND</h6>
+
+                        </div>
+                          <div class="col-md-3">
+                            <input type="hidden" class="prod_id" value="{{$item->product_id}}">
+                            @if($item->products->quantity >= $item->product_quantity)
+
+                            <div class="input-group text-center mt-2 ">
+                                <button class="input-group-text changeQuantity decrement-btn">-</button>
+                                <input type="text" name="quantity" class="form-control qty-input"  value="{{$item->product_quantity}}" />
+                                <button class="input-group-text changeQuantity increment-btn">+</button>
+                            </div>
+                            @php $total +=  $item->products->selling_price * $item->product_quantity ;@endphp
+                            @else 
+
+                            <h6 class="text-center mt-2" style="color: red">Out of Stock</h6>
+                              @endif
+                           </div> 
 
                           <div class="col-md-2 p-2">
                             <button class="btn btn-danger delete-cart-item">
@@ -80,10 +93,17 @@
 
                        
                     </div>
+             
                     @endforeach
-
+                    
+                </div>
+                <div class="card-footer">
+                  <h6 >Total Price : {{$total}} TND</h6>
+                  <a href="{{ url('checkout')}}" class="btn btn-success float-right">Proceed to Checkout</a>
                 </div>
             </div>
+
+           
         </div>
 
       
@@ -104,5 +124,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 <script src="{{asset('/js/cart.js')}}"></script>
 
+@if (session('success'))
+<script>
+swal({
+  title: "{{ session('success') }}",
+  icon: "success",
+  button: "OK",
+});
+
+</script>
+@endif
 
 @include('home.footer')
