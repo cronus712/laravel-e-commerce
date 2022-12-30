@@ -45,6 +45,7 @@ class CartController extends Controller
     public function viewCart() {
 
         $cartItem = Cart::where('user_id', Auth::id())->get();
+
         return view('cart', compact('cartItem'));
     }
 
@@ -80,7 +81,7 @@ class CartController extends Controller
             $cartItem = Cart::where('product_id', $product_id)->where('user_id', Auth::id())->first();
             $cartItem->product_quantity = $product_quantity;
             $cartItem->update();
-             return response()->json(['status' => "Product updated"]);
+             return response()->json(['status' => "Cart updated"]);
 
 
            }
