@@ -47,6 +47,8 @@
                       <li class="breadcrumb-item active"><a href="{{url('cart')}}">Cart</a> </li>
                     </ol>
                   </nav>
+                  @if ($cartItem->count() > 0)
+                      
                           @php
                              $total = 0;
                           @endphp
@@ -101,6 +103,15 @@
                   <h6 >Total Price : {{$total}} TND</h6>
                   <a href="{{ url('checkout')}}" class="btn btn-success float-right">Proceed to Checkout</a>
                 </div>
+
+                @else 
+                <div class="card-body text-center">
+                <h3>Your cart is empty</h3>
+                <a href="{{url('home')}}" class="btn btn-warning float-right">Continue shopping</a>
+                </div>
+
+                @endif
+
             </div>
 
            

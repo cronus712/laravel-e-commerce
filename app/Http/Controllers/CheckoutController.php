@@ -22,15 +22,14 @@ class CheckoutController extends Controller
              }
          }
 
+         
+
         $cartItem = Cart::where('user_id', Auth::id())->get();
         return view('home.checkout', compact('cartItem'));
     }
 
-
     public function placeOrder(Request $request, Order $order) {
 
-
-        
        $this->validate(request(), [
         'name' => 'required',
         'email' => 'required',
@@ -46,6 +45,15 @@ class CheckoutController extends Controller
        $order->country = $request->input('country');
        $order->state = $request->input('state');
        $order->zip = $request->input('zip');
+       $order->reference = 'order No'.rand(1111,9999);
+
+
+       $total = 0;
+       $cartItem_total = Cart::where('user_id', Auth::id())->get();
+       foreach ($cartItem_total as $product) {
+        $total += $product->products->selling_price ;
+       }
+       $order->total_price = $total;
        $order->save();
 
 

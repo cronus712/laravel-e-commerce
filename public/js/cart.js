@@ -1,5 +1,32 @@
 // add to cart 
 $(document).ready(function() {
+    loadcart();
+
+    $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+
+    
+    function loadcart() {
+
+        $.ajaxSetup({
+            headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+            }); 
+
+        $.ajax({
+            method: "GET",
+            url: "/load-cart-data",
+            success:function(response) {
+                $('.cart-count').html('');
+                $('.cart-count').html(response.count);
+
+           }
+        })
+      }
 
     $('.addToCartBtn').click(function(e) {
         e.preventDefault();
@@ -21,6 +48,8 @@ $(document).ready(function() {
             },
             success: function(response) {
                 swal(response.status);
+                loadcart();
+
             }
         })
       
@@ -104,6 +133,7 @@ $('.changeQuantity').click(function(e) {
         data : data,
         success:function(response) {
             window.location.reload();
+            loadcart();
        }
     })
 });
@@ -130,3 +160,4 @@ $('.changeQuantity').click(function(e) {
       })
     }, false)
   }())
+

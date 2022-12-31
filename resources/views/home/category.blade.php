@@ -11,7 +11,7 @@
                 
             <div class="item">
                 <div class="card category" >
-             <img src="{{ asset('storage/images/'.$category->image)}}" alt="Category image" style="height:300px;width:100%" class="category-image">
+             <img src="{{ asset('storage/images/'.$category->image)}}" alt="Category image" width="300px" height="300px" class="category-image">
 
              <div class="category-name">
                 <a href="{{ url('/view-category/'.$category->slug)}}" style="color:white;">{{$category->name}}</a>

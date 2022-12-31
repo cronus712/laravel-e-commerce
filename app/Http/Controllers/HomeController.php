@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,6 +18,8 @@ class HomeController extends Controller
        $product = Product::where('trending','on')->take(9)->get();
        return view('home.home', compact('product', 'category'));
      }
+
+ 
 
      public function category($slug) {
 
@@ -53,5 +56,7 @@ class HomeController extends Controller
     }
 
      }
+
+ 
 
 }
