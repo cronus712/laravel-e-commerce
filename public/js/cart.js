@@ -130,3 +130,13 @@ $('.changeQuantity').click(function(e) {
       })
     }, false)
   }())
+
+  function loadcart() {
+    $.ajax({
+        method: "GET",
+        url: "/load-cart-data",
+    
+        success:function(response) {
+       }
+    })
+  }

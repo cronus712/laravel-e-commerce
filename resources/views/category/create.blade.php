@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="float-start">
-            <h2>Add New project</h2>
+            <h2>Add New Category</h2>
         </div>
         <div class="float-end">
             <a class="btn btn-primary" href="{{route('category.index')}}"> Back</a>

@@ -13,6 +13,7 @@ class Order extends Model
     protected $fillable = [
         'user_id',
         'total_price',
+        'reference',
         'name',
         'email',
         'address',
@@ -21,4 +22,8 @@ class Order extends Model
         'zip',
         'status',
     ];
+
+    public function orderitems() {
+        return $this->hasMany(OrderItem::class);
+    }
 }
