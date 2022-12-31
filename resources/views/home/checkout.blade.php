@@ -14,7 +14,10 @@
     <div class="py-5 text-center">
         <img class="d-block mx-auto mb-4" src="{{asset('/images/checkout.jpg')}}" alt="" width="220" height="72">
     </div>
+    @if ($cartItem->count() > 0)
+
     <div class="row">
+
         {{-- <div class="col-md-4 order-md-2 mb-4">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted">Your cart</span>
@@ -50,29 +53,38 @@
                     <tr style="line-height: 35px;min-height: 35px;height: 35px;">
                         <th>Name</th>
                         <th>Quantity</th>
-                        <th>Price</th>
+                        <th>Price (TND)</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @if ($cartItem->count() > 0)
+                      
+                    @php
+                       $total = 0;
+                    @endphp
                     @foreach ($cartItem as $item)
 
                     <tr style="line-height: 50px;min-height: 50px;height: 50px;">
                         <td>{{$item->products->name}}</td>
                         <td>{{$item->product_quantity}}</td>
                         <td>{{$item->products->selling_price}}</td>
+
+                        @php $total +=  $item->products->selling_price * $item->product_quantity ;@endphp
+
                     </tr>
-                    @endforeach
+                   
 
                 </tbody>
                </table>
 
          
                 <li class="list-group-item d-flex justify-content-between">
-                    <span>Total (USD)</span>
-                    <strong>$20</strong>
+                    <span>Total (TND)</span>
+                    <strong style="background-color: rgba(241, 198, 198, 0.318)">{{$total}} TND</strong>
                 </li>
                {{-- <button class="btn btn-success">Place Order</button> --}}
-    
+               @endforeach
+               @endif
         </div>
 
         @if ($errors->any())
@@ -181,12 +193,18 @@
                         <div class="invalid-feedback"> Security code required </div>
                     </div>
                 </div> --}}
+
                 <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Place Order</button>
+                <button class="btn btn-success btn-lg btn-block" type="submit">Place Order</button>
+
+                
             </form>
         </div>
+      
     </div>
-    
+    @else
+    <h2 class="text-center" style="font-family: arial; background-color:rgba(240, 124, 124, 0.273)">No orders in place</h2>
+    @endif
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

@@ -1,3 +1,4 @@
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
     
 <header class="header_section">
@@ -27,7 +28,7 @@
                  
                 <li>
                   <button class="btn  my-2 my-sm-0">
-                   <a href="{{url('cart')}}"><i class="fa fa-shopping-cart"></i> <span class="badge badge-pill bg-success cart-count">0</span></a>
+                   <a href="{{url('cart')}}"><i class="fa fa-shopping-cart" style="color: rgb(255, 106, 0)"></i> </a><span class="badge badge-pill bg-success cart-count">0</span>
                    </button>
                 </li>
         
@@ -95,3 +96,4 @@
        </nav>
     </div>
  </header>
+ <script src="{{asset('/js/cart.js')}}"></script>

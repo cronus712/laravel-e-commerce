@@ -22,6 +22,8 @@ class CheckoutController extends Controller
              }
          }
 
+         
+
         $cartItem = Cart::where('user_id', Auth::id())->get();
         return view('home.checkout', compact('cartItem'));
     }

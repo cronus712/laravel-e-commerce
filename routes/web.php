@@ -47,6 +47,7 @@ Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::middleware(['auth:sanctum'])->group(function() {
 
 Route::get('cart', [CartController::class, 'viewCart']);
+Route::get('load-cart-data', [CartController::class, 'cartCount']);
 Route::post('add-to-cart', [CartController::class, 'addProduct']);
 Route::post('delete-cart-item', [CartController::class, 'deleteProduct']);
 Route::post('update-cart', [CartController::class, 'updateProduct']);
