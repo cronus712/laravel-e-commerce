@@ -14,16 +14,20 @@
                    <a class="nav-link" href="{{url('home')}}">Home </a>
                 </li>
 
-               <li class="nav-item dropdown">
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{url('my-orders')}}">My Orders </a>
+               </li>
+
+               {{-- <li class="nav-item dropdown">
                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> <span class="nav-label">Categories <span class="caret"></span></a>
                    <ul class="dropdown-menu">
-                     {{-- @foreach ($categories as $category)
+                     @foreach ($categories as $category)
                       <li><a href="{{ url('/view-category/'.$category->slug)}}" style="color:white;">{{$category->name}}</a></li>
-                      @endforeach --}}
+                      @endforeach
                       <li>things</li>
                       <li>things</li>
                    </ul>
-                </li>
+                </li> --}}
             
                  
                 <li>
