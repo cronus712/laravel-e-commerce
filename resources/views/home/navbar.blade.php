@@ -10,12 +10,13 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
              <ul class="navbar-nav">
-                <li class="nav-item active">
-                   <a class="nav-link" href="{{url('home')}}">Home </a>
+               
+                <li class="nav-item ">
+                   <a class="nav-link {{Request::is('home') ? 'active':'' }}" href="{{url('home')}}">Home </a>
                 </li>
 
                 <li class="nav-item ">
-                  <a class="nav-link" href="{{url('my-orders')}}">My Orders </a>
+                  <a class="nav-link {{Request::is('my-orders') ? 'active':'' }}" href="{{url('my-orders')}}">My Orders </a>
                </li>
 
                {{-- <li class="nav-item dropdown">
