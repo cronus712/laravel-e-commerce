@@ -14,7 +14,7 @@
     <div class="py-5 text-center">
         <img class="d-block mx-auto mb-4" src="{{asset('/images/checkout.jpg')}}" alt="" width="220" height="72">
     </div>
-    @if ($cartItem->count() > 0)
+
 
     <div class="row">
 
@@ -72,18 +72,17 @@
                         @php $total +=  $item->products->selling_price * $item->product_quantity ;@endphp
 
                     </tr>
-                   
+                    @endforeach
 
                 </tbody>
                </table>
 
          
-                <li class="list-group-item d-flex justify-content-between">
-                    <span>Total (TND)</span>
-                    <strong style="background-color: rgba(241, 198, 198, 0.318)">{{$total}} TND</strong>
-                </li>
-               {{-- <button class="btn btn-success">Place Order</button> --}}
-               @endforeach
+         
+               <li class="list-group-item d-flex justify-content-between">
+                <span>Total (TND)</span>
+                <strong style="background-color: rgba(241, 198, 198, 0.318)">{{$total}} TND</strong>
+            </li>
                @endif
         </div>
 
@@ -202,14 +201,25 @@
         </div>
       
     </div>
-    @else
-    <h2 class="text-center" style="font-family: arial; background-color:rgba(240, 124, 124, 0.273)">No orders in place</h2>
-    @endif
+  
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 <script src="{{asset('/js/cart.js')}}"></script>
-
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/63b0920147425128790b028b/1glkrkm5u';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+ 
+    <!--End of Tawk.to Script-->
 @include('home.footer')

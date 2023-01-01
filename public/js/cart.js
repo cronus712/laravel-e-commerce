@@ -2,12 +2,6 @@
 $(document).ready(function() {
     loadcart();
 
-    $.ajaxSetup({
-        headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-        });
-
     
     function loadcart() {
 
@@ -20,6 +14,7 @@ $(document).ready(function() {
         $.ajax({
             method: "GET",
             url: "/load-cart-data",
+        
             success:function(response) {
                 $('.cart-count').html('');
                 $('.cart-count').html(response.count);
@@ -133,7 +128,7 @@ $('.changeQuantity').click(function(e) {
         data : data,
         success:function(response) {
             window.location.reload();
-            loadcart();
+          
        }
     })
 });

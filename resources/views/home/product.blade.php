@@ -1,3 +1,4 @@
+<link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
 
 <section class="product_section layout_padding">
     <div class="container">
@@ -14,7 +15,7 @@
              <div class="box">
                 <div class="option_container">
                    <div class="options">
-                      <a href="" class="option1">
+                      <a href="" class="option1 ">
                       {{$product->name}}
                       </a>
                       <a href="" class="option2">
@@ -22,8 +23,9 @@
                       </a>
                    </div>
                 </div>
-                <div class="img-box" >
-                   <img src="{{ asset('storage/images/'.$product->image)}}" alt="Product image" >
+                <div >
+                   <img src="{{ asset('storage/images/'.$product->image)}}" alt="Product image" style="width: 100%;
+                   height: 300px;">
                 </div>
                 <div class="detail-box">
                    <h5>
@@ -48,3 +50,4 @@
     </div>
  </section>
 
+<script src="{{asset('/js/cart.js')}}"></script>
